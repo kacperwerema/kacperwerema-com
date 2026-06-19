@@ -81,13 +81,13 @@ strong { color: var(--ink); }
 .hero { padding: 60px 0 80px; }
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 220px;
+  grid-template-columns: 1fr 380px;
   gap: 56px;
   align-items: start;
 }
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-right { order: -1; max-width: 200px; }
+  .hero-right { order: -1; max-width: 340px; }
 }
 .hero-text { padding-top: 8px; }
 .eyebrow {
@@ -125,7 +125,7 @@ strong { color: var(--ink); }
   box-shadow: var(--shadow-lg);
 }
 .hero-photo-card img {
-  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;
+  width: 100%; aspect-ratio: 3/2; object-fit: cover; object-position: top center;
   border-radius: 16px;
   display: block;
 }

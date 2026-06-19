@@ -1,0 +1,151 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+---
+
+<Base>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap-wide">
+      <p class="eyebrow">Fractional CTO · Technical Advisor</p>
+      <h1>I turn engineering into a business advantage.</h1>
+      <p class="lede">
+        15+ years leading engineering across fintech, banking and SaaS. I help founders and
+        scaleups ship reliable software faster — through sharper architecture, quality systems,
+        and engineering leadership that actually moves the numbers.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Book a strategy call</a>
+        <a href="#results" class="btn btn-ghost">See the results</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROOF STATS -->
+  <section style="padding-top:0;">
+    <div class="wrap-wide">
+      <div class="stats">
+        <div class="stat"><div class="stat-num">4mo → 6wk</div><div class="stat-label">Release cycle cut at Santander Nordic</div></div>
+        <div class="stat"><div class="stat-num">0 → 50k+</div><div class="stat-label">Businesses scaled on platform (Swoop)</div></div>
+        <div class="stat"><div class="stat-num">£5M</div><div class="stat-label">Grant secured via architecture transformation</div></div>
+        <div class="stat"><div class="stat-num">2M/day</div><div class="stat-label">Users served at 99.9% availability</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap-wide">
+      <div class="section-head">
+        <p class="eyebrow">How I help</p>
+        <h2>Engineering leadership, on demand</h2>
+        <p>You don't always need a full-time CTO. You need the right decisions made at the right
+          time — and someone accountable for the outcome. That's the work.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Technical Strategy & Architecture</h3>
+          <p>Roadmaps, system design and architecture decisions that match your stage — not
+            over-engineered, not fragile. From monolith-to-microservices to multi-tenant SaaS.</p>
+        </div>
+        <div class="card">
+          <h3>Quality & Delivery Transformation</h3>
+          <p>Shift-left quality, test automation and SDLC redesign that shortens release cycles
+            and cuts defects. Built on my P.I.R.A.T.E.S. quality-maturity framework.</p>
+        </div>
+        <div class="card">
+          <h3>Engineering Leadership</h3>
+          <p>Team topologies, hiring, coaching and the operating cadence that turns a group of
+            engineers into a high-trust, high-output team aligned to business goals.</p>
+        </div>
+        <div class="card">
+          <h3>AI & Automation Leverage</h3>
+          <p>Where AI and agentic systems create real ROI vs. hype. Practical adoption that
+            finances itself — not science projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS / EXPERIENCE -->
+  <section id="results" style="background:var(--bg-elev);">
+    <div class="wrap-wide">
+      <div class="section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Outcomes, not job titles</h2>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Santander Nordic</h3>
+          <p><strong>Technical Advisor — Quality & Platform.</strong> Core designer of the quality
+            process that cut release cycles from 4 months to 6 weeks across 6 teams / 28 engineers.
+            Built the E2E/load/contract automation foundation.</p>
+        </div>
+        <div class="card">
+          <h3>Swoop Funding</h3>
+          <p><strong>Technical Advisor — Leadership & Architecture.</strong> Scaled the product
+            from 0 to 50k+ businesses, re-architected monolith → right-sized microservices, and
+            enabled the multi-tenant migration that secured a £5M grant.</p>
+        </div>
+        <div class="card">
+          <h3>Staff Bit (Exit)</h3>
+          <p><strong>CTO & Co-founder.</strong> Took a team-augmentation business from 0 to ARR
+            with P&L ownership, led 20+ engineers, and ran enterprise transformations for clients
+            including Santander and Zara.</p>
+        </div>
+        <div class="card">
+          <h3>DMSales</h3>
+          <p><strong>Fractional CTO.</strong> Advised the CEO on technical strategy and ROI for a
+            bootstrapped ad-tech competing with Apollo.io — shipped an AI extension profitable
+            from day zero.</p>
+        </div>
+      </div>
+      <p class="center mt-lg"><a href="/about" class="btn btn-ghost">Full background →</a></p>
+    </div>
+  </section>
+
+  <!-- WRITING PREVIEW -->
+  {posts.length > 0 && (
+    <section id="writing">
+      <div class="wrap-wide">
+        <div class="section-head">
+          <p class="eyebrow">Writing</p>
+          <h2>Notes on engineering, leadership & life</h2>
+        </div>
+        <div class="post-list">
+          {posts.map((post) => (
+            <a href={`/writing/${post.id}/`} class="post-row">
+              <div>
+                <div class="post-title">{post.data.title}</div>
+                {post.data.subtitle && <div class="post-sub">{post.data.subtitle}</div>}
+              </div>
+              <div class="post-date">{fmt(post.data.pubDate)}</div>
+            </a>
+          ))}
+        </div>
+        <p class="center mt-md"><a href="/writing" class="btn btn-ghost">All writing →</a></p>
+      </div>
+    </section>
+  )}
+
+  <!-- CONTACT CTA -->
+  <section id="contact">
+    <div class="wrap-wide">
+      <div class="cta-band">
+        <h2>Let's talk about your engineering org</h2>
+        <p>Whether you're scaling a team, fixing delivery, or deciding where AI actually fits —
+          a 30-minute call will tell us if I can help.</p>
+        <div class="hero-cta" style="justify-content:center;">
+          <a href="https://strategyexperts.tech/" target="_blank" rel="noopener" class="btn btn-primary">Book a strategy call</a>
+          <a href="mailto:kacper.werema@gmail.com" class="btn btn-ghost">Email me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

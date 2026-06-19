@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+
+const fmt = (date: Date) => date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const iso = (date: Date) => date.toISOString();
+
+const pageUrl = new URL(`/writing/${post.id}/`, Astro.site).href;
+const keywords = d.keywords ?? d.tags;
+
+// Article + Breadcrumb structured data → eligible for Google rich results.
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.title,
+  description: d.description,
+  datePublished: iso(d.pubDate),
+  dateModified: iso(d.updatedDate ?? d.pubDate),
+  author: { '@type': 'Person', name: 'Kacper Werema', url: 'https://kacperwerema.com' },
+  publisher: { '@type': 'Person', name: 'Kacper Werema', url: 'https://kacperwerema.com' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+  keywords: keywords.join(', '),
+  ...(d.ogImage ? { image: new URL(d.ogImage, Astro.site).href } : {}),
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://kacperwerema.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Writing', item: 'https://kacperwerema.com/writing/' },
+    { '@type': 'ListItem', position: 3, name: d.title, item: pageUrl },
+  ],
+};
+---
+
+<Base
+  title={`${d.title} — Kacper Werema`}
+  description={d.description}
+  ogType="article"
+  ogImage={d.ogImage}
+  keywords={keywords}
+  canonicalUrl={d.canonicalUrl}
+  article={{ publishedTime: iso(d.pubDate), modifiedTime: iso(d.updatedDate ?? d.pubDate), tags: d.tags }}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <article class="article">
+    <div class="wrap">
+      <div class="article-head">
+        <a href="/writing" style="font-size:.9rem;">← All writing</a>
+        <h1 class="mt-sm">{d.title}</h1>
+        {d.subtitle && <p class="lede" style="font-size:1.15rem;margin-top:10px;">{d.subtitle}</p>}
+        <p class="article-meta mt-sm">
+          <time datetime={iso(d.pubDate)}>{fmt(d.pubDate)}</time>
+          {d.tags.length > 0 && <> · {d.tags.map((t) => <span class="tag">{t}</span>)}</>}
+        </p>
+      </div>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      {d.crossPostedUrl && (
+        <p class="article-meta mt-lg" style="padding-top:20px;border-top:1px solid var(--border);">
+          Also published on <a href={d.crossPostedUrl} target="_blank" rel="noopener">Substack</a>.
+        </p>
+      )}
+
+      <div class="cta-band mt-lg">
+        <h2>Found this useful?</h2>
+        <p>I write on engineering, leadership and deliberate living. Subscribe, or let's talk if you need a hand with your engineering org.</p>
+        <div class="hero-cta" style="justify-content:center;">
+          <a href="https://kacperwerema.substack.com/" target="_blank" rel="noopener" class="btn btn-primary">Subscribe</a>
+          <a href="https://strategyexperts.tech/" target="_blank" rel="noopener" class="btn btn-ghost">Work with me</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Base>

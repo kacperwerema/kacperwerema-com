@@ -1,0 +1,42 @@
+---
+# ── HOW TO ADD A POST ──────────────────────────────────────────────
+# 1. Copy this file, rename to your-post-slug.mdx (the filename = the URL)
+# 2. Fill in the frontmatter below
+# 3. Write your post in Markdown under the closing ---
+# 4. Set draft: false when ready to publish
+# 5. git push → live in ~30s
+#
+# SEO notes:
+#  - description: write 120–160 chars. This is your Google snippet. Make it compelling.
+#  - canonical defaults to THIS site (good — builds your domain authority).
+#    Only set canonicalUrl if the real original lives elsewhere.
+#  - If you also post on Substack, set crossPostedUrl AND on Substack set its
+#    canonical URL to point back here, so Google credits kacperwerema.com.
+#  - ogImage: optional 1200x630 image in /public for social sharing.
+# ───────────────────────────────────────────────────────────────────
+title: "Example Post Title"
+subtitle: "An optional one-line hook"
+description: "A compelling 120–160 character summary that doubles as the Google search snippet and social-share text. Write it for humans."
+pubDate: 2026-01-01
+# updatedDate: 2026-02-01   # uncomment when you revise
+category: leadership          # leadership | mindset
+tags: ["leadership", "architecture"]
+draft: true                   # ← set false to publish
+# crossPostedUrl: "https://kacperwerema.substack.com/p/your-post"
+# ogImage: "/og/your-post.png"
+# keywords: ["custom", "keywords", "if overriding tags"]
+---
+
+Write your post here in **Markdown**. Standard formatting works:
+
+## A heading
+
+A paragraph with a [link](https://kacperwerema.com) and some `inline code`.
+
+- Bullet points
+- Work fine
+
+> Blockquotes look good with the accent bar.
+
+Because these are `.mdx` files, you can also import and use components later
+if you ever want interactive elements — but plain Markdown is all you need.

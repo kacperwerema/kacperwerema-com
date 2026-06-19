@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  ogImage?: string;
+  keywords?: string[];
+  canonicalUrl?: string; // explicit override; defaults to self
+  noindex?: boolean;
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    tags?: string[];
+  };
+}
+
+const {
+  title = 'Kacper Werema — Fractional CTO & Technical Advisor',
+  description = 'Fractional CTO and technical advisor. I help startups and scaleups turn engineering into a business advantage — architecture, quality, delivery and leadership that ships.',
+  ogType = 'website',
+  ogImage = '/og-default.png',
+  keywords = ['fractional CTO', 'technical advisor', 'engineering leadership', 'software architecture', 'Kacper Werema'],
+  canonicalUrl,
+  noindex = false,
+  article,
+} = Astro.props;
+
+// Self-canonicalize by default (builds domain authority); allow override.
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, Astro.site).href;
+const ogImageAbs = new URL(ogImage, Astro.site).href;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Kacper Werema — Writing" href="/rss.xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="author" content="Kacper Werema" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Kacper Werema" />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    {article?.publishedTime && <meta property="article:published_time" content={article.publishedTime} />}
+    {article?.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime} />}
+    {article?.tags?.map((t) => <meta property="article:tag" content={t} />)}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <!-- JSON-LD Person (site-wide identity) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Kacper Werema',
+      jobTitle: 'Head of Engineering / Fractional CTO',
+      url: 'https://kacperwerema.com',
+      sameAs: [
+        'https://www.linkedin.com/in/kacper-w/',
+        'https://kacperwerema.substack.com/',
+        'https://strategyexperts.tech/',
+      ],
+      knowsAbout: ['Software Architecture', 'Engineering Leadership', 'Technical Strategy', 'Quality Engineering', 'AI Systems'],
+    })} />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap-wide nav-inner">
+        <a href="/" class="nav-logo">Kacper Werema</a>
+        <div class="nav-links">
+          <a href="/#services" class="hide-sm">Services</a>
+          <a href="/#results" class="hide-sm">Results</a>
+          <a href="/writing">Writing</a>
+          <a href="/about" class="hide-sm">About</a>
+          <a href="/#contact" class="nav-cta">Book a call</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="wrap-wide footer-inner">
+        <p>© {year} Kacper Werema</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/kacper-w/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://kacperwerema.substack.com/" target="_blank" rel="noopener">Substack</a>
+          <a href="https://strategyexperts.tech/" target="_blank" rel="noopener">Strategy Experts</a>
+          <a href="/rss.xml">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

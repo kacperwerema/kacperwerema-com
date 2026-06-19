@@ -110,27 +110,34 @@ strong { color: var(--ink); }
 }
 .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
 
-/* Right column: photo card + focus widget */
-.hero-right { display: flex; flex-direction: column; gap: 16px; }
+/* Right column: photo card + focus widget overlapping behind */
+.hero-right {
+  position: relative;
+}
 
 .hero-photo-card {
+  position: relative;
+  z-index: 2;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 24px;
-  padding: 12px;
+  padding: 10px;
   box-shadow: var(--shadow-lg);
 }
 .hero-photo-card img {
-  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top center;
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;
   border-radius: 16px;
   display: block;
 }
 
 .hero-focus-card {
+  position: relative;
+  z-index: 1;
+  margin-top: -52px;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 20px;
-  padding: 22px 24px;
+  padding: 64px 24px 22px;
   box-shadow: var(--shadow);
 }
 .hero-focus-label {
@@ -138,8 +145,8 @@ strong { color: var(--ink); }
   margin-bottom: 4px;
 }
 .hero-focus-sub {
-  font-size: .88rem; color: var(--muted);
-  padding-bottom: 16px; margin-bottom: 16px;
+  font-size: .85rem; color: var(--muted);
+  padding-bottom: 14px; margin-bottom: 14px;
   border-bottom: 1px solid var(--line);
   display: flex; justify-content: space-between; align-items: center;
 }
@@ -148,20 +155,20 @@ strong { color: var(--ink); }
   background: #3cba72; flex-shrink: 0;
 }
 .hero-focus-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
 }
 .hero-focus-item {
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 10px 12px;
 }
 .hero-focus-item-label {
-  font-family: var(--mono); font-size: .65rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--faint); margin-bottom: 4px;
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 3px;
 }
 .hero-focus-item-val {
-  font-size: .95rem; font-weight: 700; color: var(--ink);
+  font-size: .9rem; font-weight: 700; color: var(--ink);
 }
 
 /* ── Divider ── */

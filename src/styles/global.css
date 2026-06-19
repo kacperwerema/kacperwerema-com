@@ -81,13 +81,13 @@ strong { color: var(--ink); }
 .hero { padding: 60px 0 80px; }
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 220px;
   gap: 56px;
   align-items: start;
 }
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-right { order: -1; max-width: 340px; }
+  .hero-right { order: -1; max-width: 200px; }
 }
 .hero-text { padding-top: 8px; }
 .eyebrow {

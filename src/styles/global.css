@@ -171,7 +171,42 @@ strong { color: var(--ink); }
   font-size: .9rem; font-weight: 700; color: var(--ink);
 }
 
-/* ── Divider ── */
+/* ── Scenario cards ── */
+.card-scenario h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.card-outcome {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: .9rem; font-weight: 600; color: var(--accent);
+}
+
+/* ── Fit lists ── */
+.fit-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.fit-list li {
+  padding: 16px 18px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: .95rem; color: var(--muted);
+  line-height: 1.55;
+}
+.fit-list li strong { color: var(--ink); display: block; margin-bottom: 2px; }
+.fit-list--no li { border-color: var(--line); }
+.fit-list--no li strong { color: var(--red); }
+
+/* ── How it works steps ── */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step {
+  display: flex; gap: 24px; align-items: flex-start;
+  padding: 24px 0; border-bottom: 1px solid var(--line);
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  font-family: var(--mono); font-size: .75rem; font-weight: 700;
+  color: var(--accent-warm); letter-spacing: .08em;
+  background: rgba(193,132,45,.1); border-radius: 8px;
+  padding: 4px 10px; flex-shrink: 0; margin-top: 2px;
+}
+.step-body h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.step-body p { font-size: .95rem; }
 .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
 
 /* ── Stats ── */

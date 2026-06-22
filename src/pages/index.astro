@@ -9,22 +9,27 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft))
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 ---
 
-<Base>
+<Base
+  title="Kacper Werema — Fractional CTO & Engineering Advisor"
+  description="Fractional CTO for supply chain companies and funded startups. I fix slow delivery, build engineering teams, and make AI work in practice — not in theory."
+>
+
   <!-- HERO -->
   <header class="hero">
     <div class="wrap">
       <div class="hero-inner">
         <div class="hero-text">
-          <p class="eyebrow">Supply chain · Engineering leadership · Fractional CTO</p>
-          <h1 class="hero-headline">Engineering<br/>that ships<br/>and scales.</h1>
+          <p class="eyebrow">Fractional CTO · Engineering Advisor · Supply Chain</p>
+          <h1 class="hero-headline">Your engineering team should be your edge.<br/><em>Let's make it one.</em></h1>
           <p class="lede">
-            I build and lead engineering teams in complex domains — currently supply chain
-            planning at Oaasis. 15+ years across fintech, banking and logistics. I take selective
-            advisory engagements where the leverage is real.
+            I step into supply chain companies and funded startups as a fractional CTO —
+            diagnosing why delivery is slow, building teams that ship, and making AI
+            work in practice, not just in theory. Senior judgment, hands-on execution,
+            no full-time hire required.
           </p>
           <div class="hero-cta">
-            <a href="https://cal.com/kwerema/coffee" target="_blank" rel="noopener" class="btn btn-primary">Book a strategy call</a>
-            <a href="#results" class="btn btn-ghost">See the results</a>
+            <a href="https://cal.com/kwerema/coffee" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min call</a>
+            <a href="#fit" class="btn btn-ghost">Is this for you?</a>
           </div>
         </div>
 
@@ -64,17 +69,180 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: '
 
   <hr class="divider" />
 
-  <!-- PROOF STATS -->
-  <section style="padding: 48px 0;">
+  <!-- SELF-SELECTION -->
+  <section id="fit">
     <div class="wrap">
-      <div class="stats-row">
+      <p class="section-label">You're in the right place if</p>
+      <div class="cards">
+
+        <div class="card card-scenario">
+          <div class="card-tag">Delivery</div>
+          <h3>"We're always busy but nothing ships."</h3>
+          <p>Your team works hard. Standups happen. PRs get merged. But the product isn't moving fast enough and you can't put your finger on why. There's a bottleneck — it's just invisible from where you sit.</p>
+          <p class="card-outcome">→ I find it, name it, and fix it. Usually within the first few weeks.</p>
+        </div>
+
+        <div class="card card-scenario">
+          <div class="card-tag">Leadership</div>
+          <h3>"We need a CTO — but not a €150k salary yet."</h3>
+          <p>You're past early chaos but your founding team is stretched. Engineering decisions are getting harder, technical debt is accumulating, and you need someone in the room who understands both code and business — without the full-time overhead.</p>
+          <p class="card-outcome">→ I take the CTO seat on a fractional basis. Full ownership, right-sized cost.</p>
+        </div>
+
+        <div class="card card-scenario">
+          <div class="card-tag">AI</div>
+          <h3>"Everyone's talking about AI. We're not actually using it."</h3>
+          <p>You've tried Copilot. Maybe a ChatGPT wrapper. Nothing stuck. Meanwhile you keep reading about teams shipping 10x faster with AI-first workflows. The gap is real and you don't know how to close it.</p>
+          <p class="card-outcome">→ I build AI into how your team actually works — not as a demo, as a multiplier.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WHAT YOU GET -->
+  <section id="services">
+    <div class="wrap">
+      <p class="section-label">What you get</p>
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;">
+        <div>
+          <h2>Outcomes, not deliverables.</h2>
+          <p class="mt-sm">I don't hand over a strategy deck and disappear. I stay in until the problem is solved — whether that's a specific engagement or ongoing fractional leadership.</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-tag">Clarity</div>
+            <h3>A clear picture of why delivery is slow</h3>
+            <p>Most delivery problems aren't technical — they're structural. Wrong team topology, unclear ownership, missing process at the right level. I diagnose fast and give you a concrete fix, not a vague roadmap.</p>
+          </div>
+          <div class="card">
+            <div class="card-tag">Decisions</div>
+            <h3>Engineering decisions tied to business outcomes</h3>
+            <p>I read balance sheets. I understand unit economics. Every technical decision I make is framed around what it costs and what it earns — so you stop treating engineering as a cost centre.</p>
+          </div>
+          <div class="card">
+            <div class="card-tag">Domain</div>
+            <h3>Supply chain expertise that's genuinely rare</h3>
+            <p>Optimization, forecasting, constrained allocation, inventory planning — I've shipped these in production for companies from €30M to €200M in revenue. That's not something you find in a generalist.</p>
+          </div>
+          <div class="card">
+            <div class="card-tag">AI</div>
+            <h3>AI adoption that changes output, not just tooling</h3>
+            <p>I run an AI-first engineering workflow and I've made it work in a complex domain. I can do the same for your team — identifying where AI creates real leverage and embedding it into how you build.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WHO I WORK WITH -->
+  <section id="who">
+    <div class="wrap">
+      <p class="section-label">Who I work with</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+
+        <div>
+          <h2>Best fit.</h2>
+          <ul class="fit-list mt-md">
+            <li>
+              <strong>Supply chain & logistics companies</strong>
+              building or scaling their tech — especially where planning, forecasting or optimization is core to the product.
+            </li>
+            <li>
+              <strong>Funded startups (€1M–€15M raised)</strong>
+              that need senior engineering leadership before they can justify a full-time CTO hire.
+            </li>
+            <li>
+              <strong>Founders who want visibility</strong>
+              into their engineering org — not just to trust it, but to understand it and make better decisions with it.
+            </li>
+            <li>
+              <strong>Companies serious about AI</strong>
+              that want real workflow change, not a proof-of-concept that sits in a Notion doc.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Not a fit.</h2>
+          <p class="mt-sm" style="margin-bottom:24px;">I'll tell you up front if I can't help. It saves both of us time.</p>
+          <ul class="fit-list fit-list--no">
+            <li>
+              <strong>Pre-revenue with no budget.</strong>
+              If you haven't validated your idea and you're looking for equity-only, I'm not the right call right now.
+            </li>
+            <li>
+              <strong>You prefer slow, committee-driven decisions.</strong>
+              I move fast and I push back. If you need every change approved by six stakeholders, the engagement will frustrate both of us.
+            </li>
+            <li>
+              <strong>You want a consultant who writes specs.</strong>
+              I'm a builder. I get my hands dirty. If you need someone to produce documents and hand them to your team, there are cheaper options.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <p class="section-label">How it works</p>
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;">
+        <div>
+          <h2>Simple. No long sales process.</h2>
+          <p class="mt-sm">Three steps from "we have a problem" to "we have a plan."</p>
+          <a href="https://cal.com/kwerema/coffee" target="_blank" rel="noopener" class="btn btn-primary mt-md" style="display:inline-block;">Book the first call →</a>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h3>30-min call</h3>
+              <p>I ask hard questions about where engineering is failing you. You'll know within the call whether I can help. No pitch, no deck.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h3>Fast diagnosis</h3>
+              <p>I spend time with your team, your codebase, your process. I find the real bottleneck — which is rarely what you think it is.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h3>Engagement on your terms</h3>
+              <p>Fixed-scope project, ongoing fractional CTO, or one-off advisory — structured around what you actually need, not a standard package.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROOF -->
+  <section id="results">
+    <div class="wrap">
+      <p class="section-label">Track record</p>
+      <div class="stats-row" style="margin-bottom:32px;">
         <div class="stat">
           <div class="stat-num">0 → 1</div>
           <div class="stat-label">Built Oaasis engineering from scratch at a €4.9M-funded startup</div>
         </div>
         <div class="stat">
           <div class="stat-num">€200M</div>
-          <div class="stat-label">Largest enterprise client revenue — well beyond the core segment</div>
+          <div class="stat-label">Largest enterprise client revenue at Oaasis — well beyond the core segment</div>
         </div>
         <div class="stat">
           <div class="stat-num">4mo → 6wk</div>
@@ -85,75 +253,28 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: '
           <div class="stat-label">Mastermind sessions facilitated via CTO.pub community</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="wrap">
-      <p class="section-label">How I help</p>
-      <div style="display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;">
-      <div>
-        <h2>Deep domain expertise, senior leverage.</h2>
-        <p class="mt-sm" style="font-size:1rem;">Supply chain planning is one of the hardest engineering domains — complex constraints, real-time data, forecasting at scale. I've shipped it in production. I bring that depth plus broad fintech and SaaS experience to fractional and advisory engagements.</p>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <div class="card-tag">Domain</div>
-          <h3>Supply Chain & Logistics</h3>
-          <p>Optimization, forecasting, inventory planning and constrained allocation. Production-grade systems that handle the full planning cycle for mid-market and enterprise.</p>
-        </div>
-        <div class="card">
-          <div class="card-tag">Architecture</div>
-          <h3>Technical Strategy & Architecture</h3>
-          <p>Roadmaps and system design that match your stage. From greenfield builds to monolith-to-microservices to multi-tenant SaaS at scale.</p>
-        </div>
-        <div class="card">
-          <div class="card-tag">Quality</div>
-          <h3>Quality & Delivery Transformation</h3>
-          <p>Shift-left quality, test automation and SDLC redesign. Built on my P.I.R.A.T.E.S. quality-maturity framework — proven to cut release cycles from months to weeks.</p>
-        </div>
-        <div class="card">
-          <div class="card-tag">Leadership</div>
-          <h3>Engineering Leadership</h3>
-          <p>Team topologies, hiring, coaching and the operating cadence that turns engineers into a high-trust, high-output team aligned to business goals.</p>
-        </div>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- RESULTS -->
-  <section id="results">
-    <div class="wrap">
-      <p class="section-label">Selected work</p>
       <div class="work-grid">
         <div class="work-card">
           <h3>Oaasis <span style="font-size:.8rem;color:var(--accent-warm);font-family:var(--mono);font-weight:600;">current</span></h3>
           <div class="role">Head of Engineering · €4.9M-funded startup</div>
-          <p>Took the company from 0 to 1 — building the engineering team, technical foundations, and the supply chain planning product. Lead a team of eight. Built the go-to solution for €30–60M consumer goods companies, now landing enterprise clients at €80M–€200M revenue. Top contributor with 1,300+ commits across a TypeScript + Rust stack.</p>
+          <p>Took the company from 0 to 1 — built the team, the technical foundations, and the supply chain planning product. Lead a team of eight. Built the go-to solution for €30–60M consumer goods companies, now landing enterprise clients at €200M revenue. Top contributor with 1,300+ commits across a TypeScript + Rust stack.</p>
         </div>
         <div class="work-card">
           <h3>Staff Bit</h3>
           <div class="role">CTO & Co-founder (Exit)</div>
-          <p>Built from zero to exit with P&L ownership. Led 20+ engineers, ran enterprise transformations for clients including Santander and Zara.</p>
+          <p>Built from zero to exit with P&L ownership. Led 20+ engineers, ran enterprise transformation programmes for clients including Santander and Zara.</p>
         </div>
         <div class="work-card">
           <h3>Swoop Funding</h3>
-          <div class="role">Technical Advisor — Leadership & Architecture</div>
-          <p>Scaled from 0 to 50k+ businesses. Re-architected monolith → microservices and enabled the multi-tenant migration that secured a £5M grant.</p>
+          <div class="role">Technical Advisor — Architecture & Leadership</div>
+          <p>Scaled from 0 to 50k+ businesses. Re-architected monolith → microservices, led the multi-tenant migration that secured a £5M grant.</p>
         </div>
         <div class="work-card">
           <h3>Santander Nordic</h3>
           <div class="role">Technical Advisor — Quality & Platform</div>
-          <p>Cut release cycles from 4 months to 6 weeks across 6 teams / 28 engineers. Built the E2E, load and contract automation foundation.</p>
+          <p>Cut release cycles from 4 months to 6 weeks across 6 teams and 28 engineers. Built the E2E, load and contract automation foundation.</p>
         </div>
       </div>
-      <p class="center mt-lg"><a href="/about" class="btn btn-ghost">Full background →</a></p>
     </div>
   </section>
 
@@ -192,13 +313,14 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: '
   <section id="contact">
     <div class="wrap">
       <div class="cta-band">
-        <h2>Let's talk about your engineering org</h2>
-        <p>Whether you're scaling a team, fixing delivery, or deciding where AI actually fits — a 30-minute call will tell us if I can help.</p>
+        <h2>Think I can help? Let's find out in 30 minutes.</h2>
+        <p>Tell me what's broken. I'll tell you honestly whether it's something I can fix — and if not, I'll point you somewhere useful.</p>
         <div class="hero-cta" style="justify-content:center;">
-          <a href="https://cal.com/kwerema/coffee" target="_blank" rel="noopener" class="btn btn-primary">Book a strategy call</a>
-          <a href="mailto:kacper.werema@gmail.com" class="btn btn-ghost">Email me</a>
+          <a href="https://cal.com/kwerema/coffee" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min call</a>
+          <a href="mailto:kacper.werema@gmail.com" class="btn btn-ghost">Email me instead</a>
         </div>
       </div>
     </div>
   </section>
+
 </Base>

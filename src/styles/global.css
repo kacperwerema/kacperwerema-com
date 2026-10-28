@@ -97,7 +97,7 @@ strong { color: var(--ink); }
 }
 .hero-headline {
   font-family: var(--serif);
-  font-size: clamp(3.8rem, 8vw, 7.2rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.6rem);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -0.03em;
@@ -258,7 +258,8 @@ section { padding: 80px 0; }
 }
 
 /* ── Work/results ── */
-.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 16px; }
+.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 720px) { .work-grid { grid-template-columns: 1fr; } }
 .work-card {
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius-sm); padding: 28px 28px 24px;
